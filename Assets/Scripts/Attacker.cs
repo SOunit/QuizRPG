@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class Attacker : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    Health target;
 
-    // Update is called once per frame
-    void Update()
+    [SerializeField]
+    float attackWaitMaxTime = 5f;
+
+    float attackWaitTime = 0f;
+
+    private void Update()
     {
-        
+        attackWaitTime += Time.deltaTime;
+        if (attackWaitTime > attackWaitMaxTime)
+        {
+            Debug.Log("attackWaitTime completed");
+            attackWaitTime = 0f;
+        }
     }
 }
